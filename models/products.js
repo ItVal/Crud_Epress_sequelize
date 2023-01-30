@@ -1,23 +1,24 @@
-import { DataType } from "sequelize";
+import sequelize from 'sequelize';
 import db from "../Config/db.js";
 
+const { DataTypes } = sequelize;
 const Product = db.define('product', {
     id : {
-        type : DataType.INTEGER.UNSIGNED,
+        type : DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         autoIncrement : true,
         allowNull : null
     },
     title : {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull : false
     },
     price : {
-        type: DataType.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull : false
     },
     description : {
-        type: DataType.TEXT,
+        type: DataTypes.TEXT,
         allowNull : true
     }
 })
