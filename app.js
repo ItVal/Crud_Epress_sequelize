@@ -6,9 +6,9 @@ const app = express();
 const Port = process.env.PORT || 10000;
 
 //middlewares
-app.use(routes);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(routes);
 
 //connexion à la data base
 Db.sync()
