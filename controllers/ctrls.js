@@ -39,7 +39,26 @@ const getOne = (req, res) => {
 
 
 // update one
-const updateOne = (req, res) => {};
+const updateOne = (req, res) => {
+    const {body} = req
+    const {id} = req.params
+    Product.findByPk(id, {
+        attributes: {exclude : ["createdAt", "updatedAt"]}
+    })
+    .then((products) =>{
+        if (!products) return res.status(404).json({msg : "Not found"})
+        products.title = body.title
+        products.price = body.price
+        products.description = body.description
+        
+        products.save()
+        .then(() =>{
+            res.status(200).json({msg : "product updated"})
+        })
+        .catch(error => res.status(500).json(error))
+    })
+    .catch(error => res.status(500).json(error))
+};
 
 // delete one
 const deleteOne = (req, res) => {};
