@@ -1,5 +1,11 @@
+import Product from '../models/products.js';
 
 
+// create one
+const createOne = (req, res) => {
+    const {body} = req
+    console.log(body);
+};
 
 // get all
 const getAll = (req, res) => {};
@@ -7,8 +13,6 @@ const getAll = (req, res) => {};
 // get one
 const getOne = (req, res) => {};
 
-// create one
-const createOne = (req, res) => {};
 
 // update one
 const updateOne = (req, res) => {};
