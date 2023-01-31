@@ -61,6 +61,15 @@ const updateOne = (req, res) => {
 };
 
 // delete one
-const deleteOne = (req, res) => {};
+const deleteOne = (req, res) => {
+    const {id} = req.params
+    Product.destroy({where : {id : id}})
+    .then(elmasup => {
+        if (elmasup == 0) return res.status(404).json({msg : "Not found"})
+        res.status(200).json({message: "pruduct deleted"})
+    })
+    .catch((error) => res.status(500).json(error));
+};
+
 
 export { getAll, getOne, createOne, updateOne, deleteOne };
