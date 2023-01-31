@@ -26,7 +26,15 @@ const getAll = (req, res) => {
 
 // get one
 const getOne = (req, res) => {
-   
+    const {id} = req.params
+    Product.findByPk(id, {
+        attributes: {exclude : ["createdAt", "updatedAt"]}
+    })
+    .then((products) =>{
+        if (!products) return res.status(404).json({msg : "Not found"})
+        res.status(200).json(products)
+    })
+    .catch(error => res.status(500).json(error))
 };
 
 
